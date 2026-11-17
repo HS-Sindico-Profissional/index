@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Técnico e Documental - Residencial Itália</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #1e293b; 
+            --primary-light: #f8fafc; 
+            --accent: #ca8a04; 
+            --text-main: #334155;
+            --danger: #dc2626;
+            --success: #16a34a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e2e8f0;
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* HEADER */
+        .header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 50px 60px;
+            border-bottom: 5px solid var(--accent);
+        }
+        .header h3 {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .header p {
+            font-size: 18px;
+            color: #cbd5e1;
+            max-width: 800px;
+        }
+
+        /* SECTIONS */
+        .section { padding: 40px 60px; border-bottom: 1px solid #e2e8f0; }
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+        .section-title i { color: var(--accent); }
+
+        p { margin-bottom: 15px; text-align: justify; }
+        ul { margin-bottom: 20px; padding-left: 20px; }
+        li { margin-bottom: 10px; text-align: justify; }
+
+        /* GRID CARDS (Para os destaques) */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .card {
+            background: var(--primary-light);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        .card h4 {
+            color: var(--primary-dark);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .card p { margin-bottom: 0; font-size: 14px; }
+
+        /* ALERT BOXES */
+        .alert-box {
+            background: #fef2f2;
+            border-left: 4px solid var(--danger);
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .alert-box h4 { color: var(--danger); margin-bottom: 10px; }
+
+        /* LISTAS DOS ITENS DA RESPOSTA (SERÁ USADO NAS PRÓXIMAS PARTES) */
+        .item-box {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            page-break-inside: avoid;
+        }
+        .item-box h4 {
+            font-size: 20px;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+        }
+        .item-box h4 span {
+            display: inline-block;
+            background: var(--primary-dark);
+            color: white;
+            min-width: 40px;
+            height: 35px;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 5px;
+            margin-right: 15px;
+            font-size: 16px;
+            padding: 0 10px;
+        }
+
+        /* INFO BOXES */
+        .info-box {
+            background: #f0fdf4;
+            border-left: 4px solid var(--success);
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .info-box h4 { color: var(--success); margin-bottom: 10px; }
+
+        /* FOOTER / RENÚNCIA (SERÁ USADO NO FINAL) */
+        .resignation {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 60px;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+        .resignation i {
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .resignation h2 {
+            font-size: 32px;
+            margin-bottom: 25px;
+            color: white;
+        }
+        .resignation p {
+            color: #cbd5e1;
+            font-size: 16px;
+            text-align: justify;
+            max-width: 900px;
+            margin: 0 auto 15px auto;
+        }
+        .resignation p.highlight {
+            font-weight: 700; 
+            color: white; 
+            margin-top: 30px; 
+            font-size: 20px;
+            text-align: center;
+        }
+        .signature {
+            margin-top: 50px;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 20px;
+        }
+        .signature span {
+            display: block;
+            font-weight: 400;
+            font-size: 16px;
+            color: #94a3b8;
+        }
+
+        /* PRINT STYLES CORRIGIDOS PARA OCUPAR 100% DA FOLHA A4 */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0; /* Remove as bordas brancas do navegador e a URL do rodapé */
+            }
+            body { 
+                background: #ffffff !important; 
+                margin: 0 !important;
+            }
+            .container { 
+                box-shadow: none !important; 
+                margin: 0 !important; 
+                width: 100% !important;
+                max-width: 100% !important; 
+            }
+            .header { 
+                padding: 40px 50px !important; 
+            }
+            .section { 
+                padding: 30px 50px !important; 
+            }
+            .resignation { 
+                padding: 50px !important; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- CABEÇALHO -->
+    <div class="header">
+        <h3>Condomínio Residencial Itália</h3>
+        <h1>Relatório Técnico e Documental</h1>
+        <p>A Verdade dos Fatos: Governança Profissional vs. Alarmismo Político. Resposta oficial, técnica e irrefutável da HS Síndico Profissional ao autodenominado "Parecer Fiscal Preliminar".</p>
+    </div>
+
+<!-- INTRODUÇÃO -->
+    <div class="section">
+        <p><strong>Prezados condôminos do Residencial Itália,</strong></p>
+        
+        <p>Este documento consolida a resposta oficial, técnica e irrefutável da HS Síndico Profissional ao autodenominado "Parecer Fiscal Preliminar" assinado por dois conselheiros fiscais.</p>
+        
+        <p>Quando assumimos o Residencial Itália, herdamos um condomínio complexo, com graves vícios construtivos e passivos operacionais. Aceitamos o desafio porque somos uma empresa técnica de resolução de problemas. Durante o nosso mandato, o foco não foi a política, mas sim o resultado prático:</p>
+
+        <div class="grid-4">
+            <div class="card">
+                <h4><i class="fa-solid fa-shield-halved" style="color: var(--accent); margin-right: 5px;"></i> Proteção do Caixa</h4>
+                <p>Quando os ventos colapsaram o forro, não pedimos cota extra. Fomos a campo com laudos e garantimos o resgate de <strong>R$ 41.600,00</strong> da seguradora, salvando o bolso dos moradores.</p>
+            </div>
+            <div class="card">
+                <h4><i class="fa-solid fa-fire-extinguisher" style="color: var(--accent); margin-right: 5px;"></i> Segurança contra Incêndios</h4>
+                <p>Quando a infraestrutura elétrica ameaçou entrar em curto-circuito por oscilações externas, não maquiamos o problema. Refizemos circuitos vitais para garantir a segurança do prédio.</p>
+            </div>
+            <div class="card">
+                <h4><i class="fa-solid fa-gears" style="color: var(--accent); margin-right: 5px;"></i> Governança que Resolve Erros</h4>
+                <p>Exigimos a devolução integral de valores pagos a maior pela administradora e implantamos um <strong>App próprio da HS</strong> para auditar duplamente cada boleto.</p>
+            </div>
+            <div class="card">
+                <h4><i class="fa-solid fa-scale-balanced" style="color: var(--accent); margin-right: 5px;"></i> Blindagem Jurídica</h4>
+                <p>Reestruturamos a segurança (CFTV/Acessos) e adotamos medidas legais protetivas para evitar que o condomínio sofresse processos milionários no caso do Airbnb.</p>
+            </div>
+        </div>
+
+        <p>Infelizmente, em vez de atuar com colaboração, os signatários do parecer fiscal optaram pelo alarmismo. Divulgaram um dossiê unilateral sem qualquer reunião prévia com a gestão, atuando como uma "sindicatura paralela" e exigindo a reimpressão de documentos que já estão devidamente auditados nas pastas mensais.</p>
+        
+        <p><strong>Pior:</strong> para criar volume narrativo, o dossiê recicla apontamentos administrativos (jul/25 a abr/26) referentes a uma prestação de contas que <strong>já foi julgada, debatida e legalmente aprovada</strong> pela soberania dos moradores na AGO de 16/05/2026. Revisitar o que já foi chancelado apenas para criar tumulto desvia o foco do que realmente importa.</p>
+
+        <h2 class="section-title"><i class="fa-solid fa-gavel"></i> A Origem do Conflito: O Inconformismo Eleitoral</h2>
+        <p>A oposição sistemática à HS não nasceu de divergências contábeis, mas do inconformismo com o resultado das urnas, conforme comprova o histórico judicial do condomínio:</p>
+        
+        <div class="alert-box">
+            <h4>Processo nº 4002939-35.2025.8.26.0477/SP (5ª Vara Cível de Praia Grande)</h4>
+            <p>A autora do parecer (membro titular do Conselho) ingressou na Justiça contra o próprio Condomínio para anular a eleição de junho de 2025, pleito no qual concorreu a síndica e foi democraticamente derrotada pela chapa da HS (115 votos a 88).</p>
+            <p style="margin-top: 10px;"><strong>Em agosto de 2026, o Poder Judiciário julgou a ação totalmente improcedente</strong>, atestando a lisura do pleito e condenando a autora a pagar as custas processuais. Quando a via judicial falhou, a estratégia migrou para o Conselho Fiscal, instrumentalizado como palanque para forçar uma destituição que a Justiça já havia negado. A HS não operará refém de instabilidades fabricadas por revanchismo eleitoral.</p>
+        </div>
+
+        <h2 class="section-title"><i class="fa-solid fa-person-digging"></i> Oposição Destrutiva: Pausa nas Obras e Boicotes</h2>
+        
+        <p>Parte das críticas tenta confundir a "paralisação de manutenções estruturais" com omissão. <strong>A verdade jurídica:</strong> para resolver os graves vícios construtivos, a gestão ingressou com ação judicial contra a construtora. Pelo <strong>princípio da preservação de provas</strong>, fomos obrigados a pausar intervenções estéticas. Se tivéssemos feito reformas precipitadas para "mostrar serviço", teríamos destruído a prova pericial e prejudicado irreversivelmente o condomínio no processo. O laudo pautaria nossas ações de melhoria para a Assembleia de 12 de dezembro.</p>
+        
+        <p>Além disso, o microgerenciamento inviabilizou a eficiência da operação. Destacamos dois episódios recentes:</p>
+        
+        <ul>
+            <li><strong>Quebra de Transparência:</strong> Em uma reunião online fechada, membros do conselho tentaram impor a participação de condôminos "amigos". A gestão, pautada pela isonomia, vetou a manobra, explicando que não é ético permitir acesso privilegiado a alguns sem convite oficial a todos. Ignorando a isonomia, membro do conselho ocultou pessoas por trás das câmeras para escutar as deliberações. Essa politicagem de bastidor é incompatível com uma gestão séria.</li>
+            <li><strong>Sabotagem de Talentos:</strong> O condomínio perdeu seu gerente predial essencial porque os mesmos membros do conselho, visando barrar um reajuste irrisório de apenas R$ 300,00 para retenção do profissional, instaurou um bloqueio burocrático descabido, enviando uma enxurrada de questionamentos (todos devidamente respondidos pela Sindicatura) travando o processo. O resultado foi o pedido de demissão do funcionário, gerando desfalque imediato no atendimento aos moradores.</li>
+        </ul>
+
+        <p>A tentativa de instaurar um julgamento político antecipado, antes mesmo da nossa Assembleia Oficial programada para 12/12/2026 (onde apresentaremos os laudos periciais e o balanço da gestão), é a prova cabal de que o objetivo nunca foi auditar.</p>
+        
+        <p>Nós não nos curvamos a narrativas e gritos em grupos de WhatsApp. <strong>Nós respondemos com trabalho, nota fiscal, laudo técnico e lei.</strong> Nas páginas a seguir, desmontamos os 17 itens do referido parecer e restabelecemos a verdade documental do Residencial Itália.</p>
+    </div>
+
+    <!-- SEÇÃO 1: RESUMO EXECUTIVO E SOLICITAÇÕES -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Análise Técnica e Documental</h2>
+        
+        <div class="item-box">
+            <h4><span>1</span> Resumo Executivo da Gestão e Resposta às Solicitações</h4>
+            <p>O parecer paralelo inicia-se com um resumo dos "pontos mais graves" e uma lista de exigências documentais ("O que pedimos"). A gestão apresenta abaixo a verdade administrativa consolidada sobre as principais acusações, e, em seguida, o posicionamento sobre a auditoria:</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> O Seguro do Drywall (A Falsa Narrativa de Fraude)
+                </h5>
+                <p>A acusação irresponsável de "fraude" nas datas do sinistro demonstra profundo desconhecimento sobre as regras de regulação de seguros e atesta o grave despreparo de quem a redigiu. Em coberturas de vendaval, o sinistro deve registrar a data do fato gerador climático (os ventos extremos de 07/08), e não a do colapso físico final da estrutura (14/08).</p>
+                <p>Para garantir que o condomínio não perdesse o direito à indenização, a gestão agiu com técnica: obtivemos um laudo preliminar de engenharia (sem qualquer custo para o condomínio) confirmando a data correta do abalo estrutural. Na sequência, <strong>o próprio perito oficial da seguradora vistoriou o local presencialmente e atestou formalmente o nexo causal com o dia 07/08</strong>.</p>
+                <p>Ou seja, se o Residencial Itália estivesse sob o comando de gestores amadores, sem o conhecimento técnico necessário para embasar nexos de causalidade, o pedido teria sido negado (ou não teria sido feito) e o prejuízo da obra teria saído diretamente do bolso dos 408 apartamentos.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-hammer" style="color: var(--accent);"></i> Conserto da Calçada
+                </h5>
+                <p>A duplicidade de pagamento (R$ 5.500,00) foi um erro operacional. O erro foi identificado e <strong>a gestão já exigiu administrativamente com a restituição/compensação integral dos valores</strong>. Além disso, desde setembro deste ano, implementamos um sistema de controle de caixa justamente para evitarmos estes erros operacionais.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-file-contract" style="color: var(--accent);"></i> Orçamento com CNPJ Baixado (Filtro da Gestão Funcionou)
+                </h5>
+                <p>A proposta da empresa RS Serralheria foi barrada pela nossa esteira de governança e <strong>seu contrato foi formalmente vetado pela sindicatura</strong>, sendo substituída em Assembleia (maio/2026). Exigir apuração e "escândalo" sobre um orçamento que a própria gestão rejeitou e jamais pagou é transformar a proteção do patrimônio em um falso problema.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-calculator" style="color: var(--accent);"></i> Previsão Orçamentária 2026/27 (Erro Visual)
+                </h5>
+                <p>Os valores cobrados nas cotas condominiais estão matematicamente corretos e refletem a realidade aprovada. A diferença apontada (R$ 74.382,47) decorre unicamente de um erro de digitação/visual da administradora na elaboração do slide projetado na Assembleia, que omitiu rubricas de folha de pagamento na soma do "Total". <strong>É imperativo ressaltar que este erro visual não causou e não causa nenhum prejuízo financeiro aos moradores ou ao caixa do condomínio.</strong></p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-folder-open" style="color: var(--accent);"></i> Falta de Notas e Recibos (Documentação Entregue)
+                </h5>
+                <p>Não há "notas que faltam" ou pagamentos sem comprovação (como na jardinagem e iluminação). Os serviços foram realizados, pagos para a conta que o fornecedor indicou e as notas encontram-se integralmente protocoladas nas respectivas pastas mensais.</p>
+            </div>
+
+            <!-- BLOCO SOBRE SOLICITAÇÕES E AUDITORIA -->
+            <div style="background-color: var(--primary-light); padding: 25px; border-radius: 8px; margin-top: 35px; border-left: 4px solid var(--primary-dark);">
+                <h4 style="font-size: 18px; border: none; padding: 0; margin-bottom: 15px; color: var(--primary-dark);">SOBRE AS SOLICITAÇÕES DOCUMENTAIS E A AUDITORIA:</h4>
+                <p>Na seção "O que pedimos", o documento solicita a entrega de notas, extratos anuais e a contratação de uma auditoria. Sobre estes pontos, a gestão pontua:</p>
+                
+                <ul style="margin-bottom: 20px;">
+                    <li><strong>Acesso a Notas e Recibos:</strong> Causa estranheza o pedido público por notas e recibos. Toda a documentação comprobatória mensal (inclusive as apontadas no relatório) sempre esteve e continua rigorosamente disponível nas pastas de prestação de contas, as quais são de livre acesso.</li>
+                    <li style="margin-top: 10px;"><strong>Extratos de Investimento:</strong> Quanto à dificuldade na emissão dos extratos anuais consolidados das contas de investimento, a administradora Confiad relatou limitações na plataforma do sistema bancário para a extração dessa modalidade retroativa de forma agrupada. Contudo, é fundamental ressaltar que os extratos constam individualmente nas pastas mensais de prestação de contas. Se os conselheiros desejam realizar a conferência, basta acessarem os documentos mês a mês nas pastas já entregues e à disposição.</li>
+                </ul>
+
+                <div class="info-box" style="margin-top: 0; margin-bottom: 0;">
+                    <h4 style="border: none; padding: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i> A Auditoria Independente
+                    </h4>
+                    <p>Este é um ponto de total concordância da nossa gestão. É fundamental resgatar a memória do condomínio e lembrar aos moradores que a Sindicatura sempre defendeu e propôs a contratação de uma auditoria independente. Em reuniões anteriores, foram os próprios signatários deste parecer (conselheiros Heroneide e Márcio) que se posicionaram contra a medida, impedindo um procedimento que visa proteger e blindar o patrimônio de todos.</p>
+                    <p>Recebemos com extrema satisfação a mudança de postura destes conselheiros ao finalmente reconhecerem a importância desta ferramenta técnica, ainda que tardiamente.</p>
+                    <p>Deixamos, no entanto, um alerta técnico à massa condominial: o documento paralelo sugere uma auditoria "orçada pelo próprio Conselho Fiscal". Para garantir a total isonomia, imparcialidade e validade técnica — evitando que um órgão interno, politicamente motivado, escolha "a dedo" quem irá auditar o prédio para produzir relatórios encomendados —, <strong>exijam a contratação de uma empresa de auditoria externa, independente e reconhecida pelo mercado.</strong></p>
+                    <p style="margin-bottom: 0;">Nós, da HS Síndico Profissional, somos os maiores interessados na realização dessa auditoria imparcial. Temos a absoluta certeza de que um pente-fino sério em todas as contas, contratos e processos do condomínio será a prova cabal, técnica e definitiva de que a nossa gestão trabalhou com honestidade e protegeu o caixa do Residencial Itália, carimbando o alarmismo destes membros do conselho como mera peça de ficção política.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SEÇÃO 2: SEGURO DO DRYWALL -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>2</span> Esclarecimento Definitivo sobre o Sinistro do Seguro (A falsa narrativa de fraude)</h4>
+            <p>A gestão repudia veementemente a acusação irresponsável e juridicamente infundada de "fraude" contra a seguradora Tokio Marine. O apontamento de que a gestão teria mentido sobre as datas demonstra profundo desconhecimento técnico sobre regulação de sinistros e tenta criminalizar uma ação legítima que resultou em economia direta aos moradores.</p>
+            <p>Esclarecemos a realidade dos fatos, atestada por laudos técnicos de engenharia e pela própria seguradora:</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-calendar-xmark" style="color: var(--accent);"></i> O Nexo de Causalidade (07/08 e 14/08)
+                </h5>
+                <p>O documento paralelo afirma que a gestão mentiu ao relatar o sinistro, já que o forro só caiu no dia 14/08. Isso é um erro grosseiro de interpretação sobre o funcionamento de apólices de danos climáticos. A gestão reportou de forma transparente a queda do forro e o comprometimento da área.</p>
+                <p>Durante o rigoroso processo de regulação, vistoria e cruzamento de dados meteorológicos, a própria seguradora atrelou o dano ao seu <strong>"fato gerador climático"</strong>: os fortes ventos atípicos que atingiram a Baixada Santista no início daquela semana (07/08). O colapso final da estrutura no dia 14/08 foi a consequência física de uma fixação já fadigada e abalada pelo vento anterior.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-file-signature" style="color: var(--accent);"></i> Validação Técnica Dupla (Engenharia Independente e Seguradora)
+                </h5>
+                <p>Para garantir transparência, a gestão não abriu o sinistro baseada em "achismos". Solicitamos um laudo prévio à Jacob Engenharia (o qual a gestão conseguiu sem custos para o condomínio), que atestou categoricamente que o dano derivava dos ventos extremos daquela semana, informando claramente que a queda ocorreu no dia 14/08.</p>
+                <p>Além disso, a Tokio Marine enviou um perito in loco (Relatório Mouth). <strong>Foi a própria seguradora, após vistoriar o local presencialmente, que validou a ocorrência de vendaval, reconheceu o direito do condomínio e aprovou a cobertura.</strong> Afirmar que a seguradora foi "enganada" quando ela mesma vistoriou e aprovou a causa é um desrespeito ao trabalho de todos os profissionais envolvidos.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-money-bill-transfer" style="color: var(--accent);"></i> A "Divergência" de Orçamentos (R$ 52.000 vs. R$ 27.000)
+                </h5>
+                <p>O relatório paralelo acusa uma suposta irregularidade nos valores, omitindo o contexto técnico das propostas. A gestão, de forma diligente, solicitou cotações para dois cenários distintos de intervenção: um orçamento prevendo apenas o "remendo" paliativo da parte exata que cedeu (orçado na faixa de R$ 27.000), e outro contemplando a demolição e reestruturação completa da área (orçado em R$ 52.000).</p>
+                <p>Constatou-se tecnicamente que a estrutura de gesso que não havia caído estava sob risco iminente de colapso, justamente pela má execução herdada de gestões anteriores. Diante desse risco à integridade física dos moradores, <strong>a gestão optou pelo escopo de execução completo (R$ 52.000)</strong>. A seguradora recebeu o orçamento que reflete a intervenção real e necessária para sanar o dano estrutural causado pelo vendaval, não havendo qualquer fraude ou sobrepreço, mas sim zelo pela segurança definitiva do local.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-trowel-bricks" style="color: var(--accent);"></i> Vício Construtivo x Manutenção Passada
+                </h5>
+                <p>Ao contrário do que foi insinuado, não tratamos esse ponto específico como vício construtivo na nossa ação judicial contra a Construmoura porque o histórico funcional provou o contrário. O antigo zelador informou que esse teto já havia passado por reparos mal executados em gestões anteriores (onde as ferragens de sustentação foram instaladas no sentido do corredor, enfraquecendo a estrutura). Nós aproveitamos o sinistro para refazer a estrutura transversalmente, garantindo durabilidade que nunca foi dada ao longo dos anos.</p>
+            </div>
+            
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-building-circle-check" style="color: var(--accent);"></i> Sobre o CNPJ da Empresa Contratada
+                </h5>
+                <p>Diferente do que tenta induzir o documento paralelo, a gestão não contrata orçamentos irregulares. A solicitação inicial de cotação busca escopo e preço para avaliar viabilidade (momento em que o prestador enviou o documento com dados defasados). Contudo, <strong>a efetivação da contratação e o pagamento só ocorrem mediante a emissão de Nota Fiscal válida com CNPJ ativo</strong>.</p>
+            </div>
+
+            <div class="info-box" style="margin-top: 25px; margin-bottom: 0;">
+                <p style="margin-bottom: 0; font-weight: 600;">Se o condomínio estivesse sob o comando de gestores sem conhecimento técnico para embasar nexos de causalidade, o Residencial Itália teria perdido essa indenização e o custo integral da obra sairia diretamente do "bolso" dos 408 apartamentos.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 3, 4 e 5: FALHAS OPERACIONAIS E DOCUMENTAIS -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>3, 4 e 5</span> Sobre as Falhas Operacionais e Documentais</h4>
+            <p>O relatório levanta questões sobre o método e os limites da fiscalização (Item 3), a divisão de responsabilidades entre os agentes do condomínio (Item 4) e eventuais falhas processuais na formação e registro da ata da Assembleia de 16/05/2026 (Item 5).</p>
+            <p>A gestão apresenta os esclarecimentos legais definitivos sobre a estrutura de governança do Residencial Itália:</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-scale-balanced" style="color: var(--accent);"></i> Limites de Responsabilidade e Governança
+                </h5>
+                <p>Concordamos com a premissa apresentada no documento de que terceirizar a execução administrativa não transfere a responsabilidade de gestão. <strong>É exatamente por assumir a responsabilidade civil, criminal e tributária (Art. 1.348 do Código Civil e Arts. 19 e 20 da Convenção Condominial) que a Sindicatura detém a competência e a prerrogativa executiva final para administrar, aprovar e contratar.</strong></p>
+                
+                <p>Ao Conselho Fiscal (Arts. 34 e 35 da Convenção), compete o exame das contas e a emissão de pareceres, mediante consulta irrestrita às pastas mensais. É imperativo destacar que fiscalizar, analisar e sugerir não se confunde com administrar diretamente. <strong>O Conselho Fiscal não possui competência legal para atuar como co-gestor, determinar unilateralmente compras, reter ritos de contratação ou impedir despesas regularmente autorizadas.</strong> A governança exige que cada órgão atue estritamente dentro de suas competências, sem sobreposições indevidas.</p>
+            </div>           
+        </div>
+    </div>
+
+    <!-- SEÇÃO 6: ILEGALIDADE NOS COMUNICADOS -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>6</span> Sobre as Acusações de "Ilegalidade" nos Comunicados</h4>
+            <p>O documento ataca o comunicado sobre locações de curta temporada (Airbnb) e o comunicado sobre o atendimento da gestão, acusando-os de contrariar a convenção e a ata. Tratam-se de interpretações leigas que desconsideram o risco jurídico do condomínio.</p>
+
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-house-lock" style="color: var(--accent);"></i> O Risco Airbnb e a Estratégia de Defesa
+                </h5>
+                <p>O apontamento no parecer fiscal sobre o comunicado emitido pela gestão a respeito das locações por aplicativo (Airbnb) demonstra preocupante desconhecimento sobre o atual cenário do Direito Imobiliário brasileiro. A orientação de manutenção provisória do status quo não configura "desrespeito à convenção", mas sim <strong>uma rigorosa estratégia de gestão de riscos jurídicos, fundamentada em parecer oficial do escritório Lobão Advogados.</strong></p>
+                
+                <p>A realidade jurídica que rege as ações da gestão é clara:</p>
+                
+                <ul style="margin-bottom: 15px; margin-left: 20px;">
+                    <li><strong>A Paralisação Nacional pelo STJ:</strong> O Superior Tribunal de Justiça (STJ) não proibiu o Airbnb no Brasil. As decisões que circulam na mídia foram específicas para casos isolados e não geram efeito cascata automático. Pelo contrário: <strong>a Segunda Seção do STJ determinou a paralisação nacional de todas as ações judiciais que discutem o tema.</strong> O tribunal superior está julgando, neste exato momento, a controvérsia central: se a antiga cláusula de "destinação exclusivamente residencial" basta para proibir o aplicativo, ou se é necessária uma proibição expressa e específica na Convenção.</li>
+                    
+                    <li style="margin-top: 10px;"><strong>Proteção do Caixa contra Ações Indenizatórias:</strong> A decisão de manter a prática que já ocorria antes da entrada da HS Síndico Profissional visa proteger estritamente os cofres do Residencial Itália. Se a gestão proibisse sumariamente as locações por "decreto", atropelando a suspensão do STJ e sem que a convenção estivesse atualizada com o rigor exigido pela lei atual, <strong>o condomínio seria alvo imediato de uma avalanche de processos caríssimos movidos por investidores/proprietários.</strong> Essas ações cobrariam indenizações por lucros cessantes (o valor exato que deixaram de ganhar pelas diárias perdidas) em defesa de seus direitos de propriedade.</li>
+                    
+                    <li style="margin-top: 10px;"><strong>Autonomia e Responsabilidade:</strong> Enquanto a tese final do STJ não é fixada, os tribunais garantem a autonomia da gestão para manter a estabilidade operacional e evitar a judicialização em massa.</li>
+                </ul>
+                
+                <div class="info-box" style="margin-top: 20px; margin-bottom: 0;">
+                    <p style="margin-bottom: 0; font-weight: 600;">Governança responsável significa proteger os 408 apartamentos de passivos judiciais milionários. Preservar o caixa do prédio adotando cautela jurídica não é "infringir regras"; é exatamente o oposto da adoção de medidas proibitivas amadoras e impensadas que fatalmente levariam o condomínio a condenações judiciais.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-address-card" style="color: var(--accent);"></i> O "Novo" Síndico
+                </h5>
+                <p>O apontamento sobre o comunicado de contatos da gestão beira a desinformação burocrática. A execução rotineira e o escopo de gestão pertencem à estrutura da empresa HS Síndico Profissional. O comunicado divulgado teve o único propósito prático de organizar o fluxo de atendimento aos moradores.</p>
+                <p>A nota serviu para informar a transição do suporte administrativo e indicar os telefones diretos de Sérgio (síndico legal) e Gregory (sócio e braço operacional da gestão no condomínio). <strong>Transformar a divulgação de uma simples lista de contatos de trabalho em uma falsa acusação de "troca ilegal de síndico" é distorcer a realidade operacional para fabricar instabilidade política.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 7: PREVISÃO ORÇAMENTÁRIA -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>7</span> Sobre a Apresentação da Previsão Orçamentária</h4>
+            <p>O dossiê aponta uma divergência visual no somatório do "Total Anual" exibido no slide da Assembleia de 16/05/2026 (R$ 2.881.429,72 projetados ante a soma real de R$ 2.955.812,19, decorrente da omissão visual de três rubricas no quadro resumo).</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-building-shield" style="color: var(--accent);"></i> Delimitação de Competência e Resposta Oficial da Administradora
+                </h5>
+                <p>Por se tratar de questão estritamente ligada à confecção operacional do material de apoio e consolidação contábil, <strong>a administradora Confiad já apresentou os devidos esclarecimentos técnicos diretamente em sua resposta formal à Notificação Extrajudicial</strong>, detalhando os aspectos operacionais de sua competência sem que caiba à Sindicatura adentrar no mérito da referida manifestação.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-wallet" style="color: var(--accent);"></i> Ausência de Impacto Financeiro e Validação Prévia
+                </h5>
+                <p>No que tange exclusivamente à governança da gestão e à tranquilidade dos condôminos, cumpre registrar dois fatos objetivos e incontestáveis:</p>
+                
+                <ul style="margin-top: 15px; margin-bottom: 0; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;"><strong>Rateio e Caixa Intactos:</strong> Conforme o próprio parecer admite, a média mensal aprovada (R$ 246.317,68) estava matematicamente exata e já contemplava a soma integral das despesas. <strong>Nenhum morador pagou valores incorretos, o condomínio não sofreu perda de arrecadação e o caixa não teve qualquer prejuízo financeiro.</strong></li>
+                    
+                    <li><strong>Construção Conjunta com o Conselho:</strong> A base orçamentária não foi imposta unilateralmente pela sindicatura; ela foi amplamente debatida em reuniões prévias com o Conselho Fiscal vigente à época, que solicitou ajustes incorporados ao texto e <strong>recebeu o material com 48 horas de antecedência da Assembleia, sem registrar qualquer oposição.</strong></li>
+                </ul>
+            </div>
+
+            <div class="info-box" style="margin-top: 25px; margin-bottom: 0;">
+                <p style="margin-bottom: 0; font-weight: 600;">No âmbito da gestão financeira, o orçamento operacional diário segue sendo executado rigorosamente dentro do planejado ("no azul"), gerando economia real nas rubricas de consumo, terceirizadas e folha de pagamento.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 8: HONORÁRIOS E INADIMPLÊNCIA -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>8</span> Sobre a Recuperação de Inadimplência e Honorários Advocatícios (Dra. Lídia)</h4>
+            <p>O parecer paralelo questiona os percentuais de honorários repassados à Dra. Lídia na recuperação de créditos e aponta uma suposta duplicidade de escopo contratual com a Lobão Sociedade de Advocacia.</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-building-shield" style="color: var(--accent);"></i> Delimitação de Competência (Apuração e Repasse de Honorários)
+                </h5>
+                <p>No que tange ao cálculo dos percentuais aplicados em cada acordo e à operacionalização financeira dos repasses, trata-se de matéria estritamente vinculada à execução contratual da profissional e à rotina de conciliação da administradora. <strong>Os esclarecimentos técnicos e demonstrativos específicos sobre os repasses cabem exclusivamente à Dra. Lídia e à administradora Confiad, conforme manifestação formal nos autos da Notificação Extrajudicial</strong>, não cabendo à Sindicatura adentrar no mérito operacional dessas retenções.</p>
+            </div>
+            
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-scale-balanced" style="color: var(--accent);"></i> Governança da Gestão: Inexistência de Sobreposição de Funções
+                </h5>
+                <p>No âmbito que compete exclusivamente à decisão administrativa da Sindicatura, <strong>é improcedente a afirmação de que existem dois contratos para o mesmo serviço:</strong></p>
+                
+                <ul style="margin-top: 15px; margin-bottom: 0; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;"><strong>Jurídico Consultivo e Contencioso Geral (Lobão Sociedade de Advocacia):</strong> Remunerado por partido fixo mensal (R$ 1.757,00), atua exclusivamente no suporte jurídico cotidiano do condomínio, englobando defesas trabalhistas, ações cíveis, pareceres preventivos e acompanhamento de assembleias.</li>
+                    
+                    <li><strong>Recuperação de Crédito no Êxito (Dra. Lídia):</strong> Atua precipuamente na carteira de recuperação de inadimplência sob o modelo ad exitum (sem prejuízo de atos processuais ou demandas pontuais anteriores solicitadas dentro de seu escopo contratual, devidamente detalhadas em sua manifestação própria).</li>
+                </ul>
+            </div>
+
+            <div class="info-box" style="margin-top: 25px; margin-bottom: 0;">
+                <p style="margin-bottom: 0; font-weight: 600;">A separação entre o suporte jurídico consultivo e a cobrança especializada de inadimplentes é uma diretriz de eficiência administrativa que garante agilidade na recuperação de ativos para o Residencial Itália, sem qualquer sobreposição de escopo ou duplicidade de custos para o condomínio.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 9: CONTRATOS DE CFTV E ACESSO -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>9</span> Sobre os Contratos de CFTV e Controle de Acesso (Eltecom/Radcom)</h4>
+            <p>O parecer questiona a transição dos serviços da Radcom para a Eltecom, exigindo a apresentação de documentos de venda ou cessão de equipamentos entre as duas empresas e questionando a inclusão de itens periféricos (fechaduras e botoeiras) no novo contrato de comodato. A gestão esclarece:</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-network-wired" style="color: var(--accent);"></i> Eficiência Operacional e Unificação
+                </h5>
+                <p>Anteriormente, o condomínio possuía contratos fracionados que geravam ineficiência e "empurra-empurra" técnico em caso de falhas no sistema. A decisão da gestão foi <strong>unificar a responsabilidade do ecossistema de segurança (CFTV e acessos) sob um único fornecedor</strong> capaz de entregar o SLA (Acordo de Nível de Serviço) que o Residencial Itália necessita.</p>
+            </div>
+            
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-handshake" style="color: var(--accent);"></i> A Negociação B2B (Entre Empresas)
+                </h5>
+                <p>A eventual negociação de repasse de operação, compra de carteira ou aproveitamento de infraestrutura legada entre a Radcom e a Eltecom é uma <strong>transação comercial privada entre duas empresas de segurança (B2B)</strong>.</p>
+                <p>O condomínio não é, nem deve ser, auditor fiscal das transações comerciais de seus fornecedores. A nossa relação jurídica se dá com a empresa que atualmente detém a responsabilidade de manter o sistema 100% operante e atualizado, absorvendo os riscos e custos de substituição em caso de quebra.</p>
+            </div>
+            
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-server" style="color: var(--accent);"></i> O Modelo de Comodato (Hardware as a Service)
+                </h5>
+                <p>A inclusão da infraestrutura completa (incluindo fechaduras e botoeiras) no contrato de comodato garante que <strong>a Eltecom assuma o risco tecnológico</strong>. Se uma fechadura quebrar ou um leitor queimar amanhã, o custo de reposição é da empresa contratada, e não do caixa do condomínio.</p>
+            </div>
+            
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-pen-nib" style="color: var(--accent);"></i> Prerrogativa da Sindicatura
+                </h5>
+                <p>A assinatura de contratos de manutenção preventiva, tecnologia e conservação, com prazos praticados pelo mercado (como os 36 meses usuais em comodatos de segurança) e dentro do orçamento aprovado, é <strong>prerrogativa administrativa e legal do Síndico</strong>. Tais ações não caracterizam "irregularidade" ou "falta de governança", mas sim o exercício do mandato executivo conferido pela Assembleia.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 10: GASTOS COM ILUMINAÇÃO E MATERIAIS -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>10</span> Sobre os Gastos com Iluminação e Recebimento de Materiais</h4>
+            <p>O documento questiona o controle de recebimento de materiais e aponta, com alarde, um aumento nos gastos classificados como "iluminação" entre 2024/25 e 2025/26. A gestão esclarece:</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-bolt" style="color: var(--accent);"></i> O Aumento em "Iluminação"
+                </h5>
+                <p>O Residencial Itália é um condomínio de grande porte com infraestrutura elétrica que, como é sabido, sofre com vícios construtivos e sofreu, ao longo de 2025 e 2026, os <strong>duros impactos das oscilações e quedas de tensão na rede elétrica de Praia Grande</strong> (fatos públicos e notórios, que chegaram a paralisar órgãos públicos na cidade por danos em cabines primárias).</p>
+            </div>
+            
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-lightbulb" style="color: var(--accent);"></i> Modernização e Segurança, não apenas Lâmpadas
+                </h5>
+                <p>O aumento apontado de R$ 32.696,49 não se refere à compra de "estoque de lâmpadas", mas sim a <strong>serviços de infraestrutura elétrica vital</strong>. Entre 2025 e 2026, a gestão precisou realizar revisões de sistemas de iluminação que estavam em curto-circuito, isolamento e reparo de circuitos corrompidos, montagem de andaimes para substituição de plafons em altura e troca de refletores antigos por tecnologia LED.</p>
+            </div>
+            
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-fire-extinguisher" style="color: var(--accent);"></i> A Diferença entre Trocar Lâmpadas e Prevenir Incêndios
+                </h5>
+                <p>Ignorar a distinção entre "trocar uma lâmpada queimada" e "revisar e refazer o circuito elétrico de um setor inteiro para evitar incêndios" é uma leitura contábil simplista. <strong>A gestão não economizará na revisão de fiação e quadros elétricos quando a segurança do prédio e o risco de curtos-circuitos (potencializados por oscilações externas) estiverem em jogo.</strong> Todos os escopos destas modernizações constam em suas respectivas notas fiscais nas pastas mensais.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 11: OBRAS, FUNDOS E DESPESAS EXTRAORDINÁRIAS -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>11</span> Sobre Obras, Fundos e Despesas Extraordinárias</h4>
+            <p>O documento questiona o uso de fundos para o sistema de alarme, aponta o pagamento de juros de R$ 30,00 e critica compras de patrimônio. A gestão esclarece:</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-bell-concierge" style="color: var(--accent);"></i> Sistema de Alarme e Fundo de Reserva
+                </h5>
+                <p>A adequação do sistema de detecção de incêndio (AVCB) é uma <strong>obrigação legal e inegociável de segurança</strong>. A utilização do Fundo de Reserva para custear despesas extraordinárias de infraestrutura de emergência encontra pleno amparo legal e na convenção.</p>
+                <p>Quanto à avalanche de pedidos de documentos avulsos (contratos, ordens de serviço e laudos), reiteramos a diretriz de governança documental adotada por esta gestão: toda a documentação comprobatória, fiscal e técnica referente à execução do serviço e ao uso do fundo encontra-se devidamente arquivada nas respectivas pastas mensais de prestação de contas, permanecendo à inteira disposição para a fiscalização do conselho.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-coins" style="color: var(--accent);"></i> Juros Evitáveis (R$ 30,00)
+                </h5>
+                <p>O parecer aponta o pagamento de R$ 30,00 de juros em um boleto protestado (NF 1410). A gestão reconhece a ocorrência. Embora o valor de trinta reais seja estatisticamente irrisório dentro de um orçamento de quase três milhões de reais anuais, <strong>qualquer desperdício é inaceitável</strong>.</p>
+                <p>O atraso ocorreu por falha no fluxo de conciliação entre o fornecedor e a atual administradora. Como ação corretiva imediata, a sindicância não ficou restrita a cobrar a administradora: implantamos um aplicativo de controle de fluxo de caixa próprio da HS para auditar duplamente os vencimentos e travar falhas da administradora antes que gerem juros ao condomínio.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-boxes-stacked" style="color: var(--accent);"></i> Gestão de Patrimônio (Tabelas de Basquete e TV de 32")
+                </h5>
+                <p>O parecer aponta a compra de tabelas de basquete mais pesadas e de uma TV em tamanho divergente do salão de jogos. A gestão age com total transparência e esclarece ambos os casos:</p>
+                
+                <ul style="margin-top: 15px; margin-bottom: 0; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;"><strong>Sobre a TV de 32":</strong> A gestão reconhece que ocorreu um erro operacional. A compra foi realizada com base em uma medição incorreta informada pela zeladoria à época. Quando a divergência de tamanho para o padrão do salão de jogos foi efetivamente constatada, o prazo legal para devolução ao fornecedor já havia expirado. Como medida de gestão de ativos, decidiu-se não descartar o equipamento, e sim <strong>mantê-lo sob guarda para que seja reaproveitado em outro ambiente de uso administrativo/comum</strong> do condomínio que necessite de monitor. Uma nova TV, nas dimensões adequadas, seria adquirida para o salão de jogos em momento oportuno.</li>
+                    
+                    <li><strong>Sobre as Tabelas de Basquete:</strong> A acusação de erro na compra não procede com a realidade dos fatos. A aquisição ocorreu a partir de uma demanda operacional levantada pela zeladoria à época, pois o equipamento anterior estava danificado. Durante a busca por reposição, constatou-se que as tabelas antigas possuíam dimensões fora de padrão, não sendo encontradas peças de reposição idênticas no mercado. Diante disso, <strong>a gestão optou por adquirir tabelas de tamanho oficial, visando promover uma melhoria real (upgrade) na quadra do condomínio.</strong> Como a estrutura que suporta a tabela já precisava de manutenção, esta foi realizada com reforços para comportar as novas tabelas, garantindo que os moradores passem a contar com um equipamento de padrão oficial e seguro.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 12: CONSULTA AO CARTÓRIO -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>12</span> Consulta ao Cartório (Protesto)</h4>
+            <p>O apontamento do item 12 trata exatamente do mesmo título (NF 1410, da empresa Cobreflex) já questionado na seção anterior (Item 11, sobre o acréscimo de R$ 30,00). A escolha em desmembrar um único evento de R$ 165 reais em dois "escândalos" separados demonstra a clara intenção de criar volume narrativo no dossiê. A gestão unifica a resposta e encerra o assunto com total transparência:</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: var(--accent);"></i> A Origem do Protesto (Falha do Fornecedor)
+                </h5>
+                <p>A nota fiscal e o respectivo boleto não foram enviados pela Cobreflex para a caixa de cobrança da administradora nem do condomínio. <strong>Sem realizar qualquer contato prévio, a empresa encaminhou indevidamente o título de pequeno valor (R$ 165,38) para protesto.</strong></p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-file-circle-check" style="color: var(--accent);"></i> Quitação e Baixa Definitiva
+                </h5>
+                <p>Assim que o protesto foi identificado, a gestão agiu rapidamente, pagando o débito e o acréscimo de R$ 30,00, estancando o problema. <strong>O condomínio passou a cobrar ativamente a Cobreflex, e a respectiva Carta de Anuência foi formalmente enviada no dia 05/11/2026, com o protesto já baixado e resolvido.</strong></p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-ban" style="color: var(--accent);"></i> Fornecedor Bloqueado e Barreira Extra
+                </h5>
+                <p>Devido a essa conduta operacional amadora, <strong>a Cobreflex foi sumariamente bloqueada para novas compras.</strong></p>
+                <p>Reforçamos que o novo App de controle de fluxo de caixa, implantado recentemente pela Sindicatura, atua como malha fina exatamente para mitigar esse tipo de risco, impedindo que falhas de comunicação e faturamento de fornecedores gerem ônus sem o conhecimento da gestão.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 13: COBERTURA DE VIDRO -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>13</span> Sobre a Cobertura de Vidro (A acusação sobre a "RS Serralheria")</h4>
+            <p>O relatório aponta como "Grave" a escolha da empresa RS Serralheria, votada na assembleia de novembro de 2025, indicando que a empresa possuía CNPJ baixado e exigindo apurações sobre a validade deste orçamento. A gestão recebe esse apontamento com absoluta surpresa, uma vez que ele recicla um problema já detectado e sanado pela própria sindicância há cinco meses, com a devida aprovação em Assembleia.</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> A Barreira de Compliance da Gestão
+                </h5>
+                <p>A aprovação inicial de uma proposta em assembleia não isenta a empresa da esteira de aprovação fiscal da gestão e da administradora. Após a assembleia de novembro de 2025, no momento da triagem documental e alinhamento de contrato, a RS Serralheria tentou alterar valores e condições preestabelecidas.</p>
+                <p>Como a integridade do CNPJ e a manutenção do escopo são inegociáveis para a emissão de pagamentos, a gestão vetou a contratação e <strong>nenhum centavo foi pago a esta empresa</strong>.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-file-contract" style="color: var(--accent);"></i> A Solução Transparente e Registrada
+                </h5>
+                <p><strong>A gestão não escondeu o problema.</strong> Levamos o distrato à Assembleia Geral Ordinária de 16/05/2026. Conforme consta expressamente no Item 5 da respectiva Ata Oficial, os moradores deliberaram sobre o tema, aprovaram a retificação da empresa (com 64,2% dos votos) e escolheram, mediante nova análise técnica e orçamentária, a empresa Presilar Decorações para a execução da obra.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: var(--accent);"></i> Irrelevância do Apontamento
+                </h5>
+                <p>Exigir "providências" e "apuração formal" sobre um orçamento que a própria gestão rejeitou e cujo contrato foi anulado em assembleia não possui qualquer efeito prático para a proteção do condomínio, configurando apenas um esforço retórico para criar volume no relatório paralelo.</p>
+                <p>O fato incontestável é: <strong>a cobertura foi executada por uma empresa idônea (Presilar), escolhida democraticamente, com CNPJ ativo e documentação fiscal regular</strong> alocada nas pastas de prestação de contas.</p>
+            </div>
+
+            <div class="info-box" style="margin-top: 25px; margin-bottom: 0;">
+                <p style="margin-bottom: 0; font-weight: 600;">A gestão reafirma seu compromisso: não pagamos orçamentos; pagamos serviços executados com Nota Fiscal válida. A barreira funcionou e o condomínio foi protegido.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 14: SERVIÇOS DE JARDINAGEM -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>14</span> Sobre os Serviços de Jardinagem e Pagamentos</h4>
+            <p>O documento questiona os pagamentos de jardinagem, apontando que os favorecidos bancários (ex: Gilson) divergem dos emitentes das notas (ex: Sueli, Nilson), e sugere "insuficiência de detalhamento" por ausência de contratos específicos para reformas de jardim. A gestão, em conjunto com a administradora, esclarece a situação operacional para afastar qualquer insinuação de pagamento indevido:</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-file-invoice-dollar" style="color: var(--accent);"></i> A Indicação Expressa do Favorecido na Nota Fiscal
+                </h5>
+                <p>Ao contrário do que o dossiê tenta induzir, não houve desvio ou erro de favorecido. Nos documentos fiscais apresentados, <strong>consta expressamente a indicação dos dados bancários do favorecido para o recebimento</strong>, determinação feita pelo próprio prestador emitente da nota.</p>
+                <p>Efetuar o repasse para a conta que o próprio fornecedor operacional solicitou no corpo do documento fiscal não é irregularidade administrativa; é o cumprimento exato da obrigação de pagamento. Tais notas podem ser conferidas nas pastas de prestação de contas.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-leaf" style="color: var(--accent);"></i> Natureza dos Serviços (Reformas Pontuais)
+                </h5>
+                <p>Os serviços apontados não se referem à manutenção rotineira de jardim, mas sim a <strong>intervenções pontuais e específicas de melhorias paisagísticas, reforma de canteiros e colocação de plantas</strong>.</p>
+                <p>Para contratações de escopo fechado e pontual, a execução efetiva do serviço atrelada à emissão da nota fiscal legaliza plenamente a contratação, não havendo exigência legal de formulação de contratos de longo prazo.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-clipboard-check" style="color: var(--accent);"></i> Ausência de Duplicidade e Execução Comprovada
+                </h5>
+                <p>É fundamental destacar que o próprio relatório atesta que <strong>não houve duplicidade aritmética nos parcelamentos</strong> das notas fiscais (nº 23 e nº 76).</p>
+                <p>Os serviços foram plenamente executados e atestados. O recurso do condomínio foi rigorosamente investido nas benfeitorias das áreas comuns e pago à equipe que efetivamente trabalhou no local, estando todos os comprovantes devidamente registrados nas pastas mensais.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 15: DUPLICIDADE NA CALÇADA -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>15</span> Sobre o Pagamento da Manutenção da Calçada (Jota Engenharia)</h4>
+            <p>O documento aponta uma duplicidade operacional referente à NFS-e 136 (Jota Engenharia), relativa ao serviço de manutenção da calçada (R$ 5.500,00).</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-building-shield" style="color: var(--accent);"></i> Delimitação de Competência (Rotina de Conciliação e Liquidação)
+                </h5>
+                <p>No âmbito que compete à Sindicatura, a gestão aprovou a necessidade do serviço, fiscalizou a execução física da obra (que foi devidamente entregue) e autorizou o pagamento único de R$ 5.500,00. <strong>O detalhamento sobre o processamento bancário subsequente e a falha operacional de conciliação cabem exclusivamente à administradora Confiad, que já se manifestou formalmente sobre o ocorrido em sua resposta à Notificação Extrajudicial</strong>, não cabendo à gestão adentrar no mérito da referida rotina contábil.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-rotate-left" style="color: var(--accent);"></i> Atuação da Sindicatura: Cobrança e Restituição Integral
+                </h5>
+                <p>Assim que a inconsistência foi apontada — contribuição que a gestão reconhece e valoriza —, <strong>a Sindicatura atuou de forma imediata exigindo da administradora e do fornecedor a pronta restituição do valor excedente (R$ 5.500,00), garantindo a recomposição integral do caixa do condomínio sem qualquer prejuízo aos moradores.</strong></p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> Barreira Tecnológica Própria da HS
+                </h5>
+                <p>Para não depender exclusivamente dos filtros da administradora, a Sindicatura implantou, desde setembro deste ano, <strong>uma barreira extra de auditoria por meio de um aplicativo próprio de controle de fluxo de caixa desenvolvido pela HS</strong>, conferindo duplamente os vencimentos e blindando o condomínio contra falhas operacionais de terceiros.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 16: EXIGÊNCIA DE DOCUMENTOS -->
+    <div class="section" style="background-color: #f1f5f9;">
+        <div class="item-box">
+            <h4><span>16</span> Sobre a Exigência de "Documentos para o Dossiê Final"</h4>
+            <p>Na última página, o relatório paralelo lista uma extensa relação de documentos (incluindo atas, planilhas editáveis, notas fiscais, laudos, extratos, relatórios processuais e cotações), exigindo que a gestão compile tais materiais para integrarem um suposto "dossiê final".</p>
+            <p>A gestão reafirma, de forma categórica e definitiva, o posicionamento de que <strong>a estrutura administrativa do Condomínio Residencial Itália não atua como "despachante" de conselheiros</strong> para a montagem de dossiês avulsos ou relatórios personalizados.</p>
+            
+            <div style="margin-top: 25px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-folder-tree" style="color: var(--accent);"></i> O Rito Oficial e a Transparência Digital
+                </h5>
+                <p>O rito legal, contábil e estatutário de transparência e auditoria já existe, é soberano e é cumprido mensalmente: a Prestação de Contas. <strong>Todos os comprovantes de pagamentos, notas fiscais, contratos efetivados e extratos estão rigorosamente processados e alocados nas pastas mensais</strong>, que se encontram à disposição tanto na via física quanto na via digital (através do aplicativo do condomínio gerido pela administradora).</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-file-excel" style="color: var(--accent);"></i> Orçamentos Descartados e Burocracia Irreal
+                </h5>
+                <p>Esclarecemos tecnicamente dois pontos sobre a lista exigida. Primeiro: <strong>orçamentos não selecionados e cotações descartadas não compõem, por regra contábil, as pastas mensais</strong>, uma vez que não representam despesas efetivamente realizadas pelo condomínio.</p>
+                <p>Segundo: exigir laudos, ordens de serviço (O.S.), termos de aceite e relatórios de medição para manutenções e consertos pontuais demonstra descolamento da realidade operacional. Serviços rotineiros ou de pequeno escopo são validados pela execução física no local e atestados pela respectiva nota fiscal, não gerando o rastro burocrático exigido em obras de grande engenharia.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-clock" style="color: var(--accent);"></i> Eficiência Operacional
+                </h5>
+                <p>Exigir que a sindicatura ou o setor financeiro paralisem a operação diária de manutenção e segurança do condomínio para procurar, copiar e "empacotar" novamente documentos que já estão formalmente entregues nas pastas oficiais <strong>configura ineficiência operacional e desperdício de tempo e recursos</strong> pagos por todos os moradores.</p>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+                <h5 style="color: var(--primary-dark); font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-scale-balanced" style="color: var(--accent);"></i> O Dever do Conselho
+                </h5>
+                <p>O Conselho Fiscal possui a prerrogativa incontestável de auditar qualquer nota, contrato ou extrato. Para exercer este dever, basta que acessem as pastas de prestação de contas, as quais permanecem, como sempre estiveram, à inteira disposição.</p>
+                <p><strong>O Conselho fiscaliza os atos da Sindicatura; o Conselho não determina a rotina de trabalho nem cria ritos paralelos de governança.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 17: CONCLUSÃO E POSICIONAMENTO INSTITUCIONAL -->
+    <div class="resignation">
+        <i class="fa-solid fa-scale-balanced"></i>
+        <h4><span>17</span></h4><h2>O Dever Cumprido e os Limites da Governança Profissional</h2>
+        
+        <p>A leitura atenta deste Relatório Técnico e a confrontação direta com os fatos, atas e documentos oficiais aqui apresentados revelam uma lamentável realidade: a tentativa sistemática de <strong>dois membros do Conselho Fiscal</strong> de transformar desafios operacionais cotidianos — ou, mais gravemente, vitórias da nossa gestão — em escândalos artificiais para criar pânico e desgaste político no condomínio.</p>
+        
+        <p>Ao longo deste documento, a gestão demonstrou, de forma irrefutável, que:</p>
+        
+        <div style="text-align: left; max-width: 900px; margin: 25px auto; background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <div style="margin-bottom: 20px;">
+                <h5 style="color: var(--accent); font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-shield-halved"></i> Não há fraude, mas sim gestão técnica comprovada
+                </h5>
+                <p style="margin-bottom: 0;">Onde gritaram "fraude", nós fomos a campo com laudos de engenharia e trouxemos R$ 41.600,00 em indenização da seguradora para o caixa, livrando os 408 apartamentos de um rateio que teria ocorrido caso fôssemos omissos.</p>
+            </div>
+            
+            <div style="margin-bottom: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 15px;">
+                <h5 style="color: var(--accent); font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-gears"></i> Governança ágil não esconde erros, ela resolve
+                </h5>
+                <p style="margin-bottom: 0;">Onde houve falhas operacionais de terceiros, nós não fomos complacentes. Bloqueamos CNPJs irregulares, exigimos a restituição integral de valores ao caixa e implantamos um rigoroso controle tecnológico próprio (App da Sindicatura) para blindar o condomínio contra novas falhas financeiras.</p>
+            </div>
+            
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 15px;">
+                <h5 style="color: var(--accent); font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-folder-open"></i> A verdadeira Transparência
+                </h5>
+                <p style="margin-bottom: 0;">A gestão não atua — e nem atuará — como "despachante" gerador de dossiês e envios avulsos por WhatsApp para microgerenciamento paralelo. A transparência do condomínio já ocorre de forma eletrônica, integral e legal. Toda a documentação contábil encontra-se disponibilizada nas pastas de prestação de contas, prontas para qualquer crivo. A Sindicatura administra; o Conselho audita as pastas oficiais.</p>
+            </div>
+        </div>
+        
+        <p>Nós somos uma empresa de gestão técnica. Quando assumimos o Residencial Itália, firmamos o compromisso de trazer austeridade e profissionalismo para um condomínio que, sabidamente, enfrentava graves vícios construtivos e passivos operacionais herdados. Trabalhamos incansavelmente para organizar a casa, defender o patrimônio de processos milionários e manter as contas claras.</p>
+        
+        <p>No entanto, a governança profissional exige condições mínimas de respeito institucional e colaboração. A elaboração de um dossiê paralelo assinado por dois conselheiros, divulgado sem qualquer diálogo gerencial prévio, provam que o ambiente foi tomado por uma agenda de oposição irredutível. O objetivo dessas ações isoladas nunca foi auditar ou construir soluções, mas sim inviabilizar o trabalho diário e recusar, deliberadamente, a verdade documental.</p>
+        
+        <p class="highlight">
+            A HS Síndico Profissional possui princípios inegociáveis: não atuamos com politicagem, não aceitamos microgerenciamento e, sobretudo, não submetemos nossa equipe técnica a um ambiente onde a racionalidade administrativa foi substituída pelo desgaste fabricado. Quando a politização ultrapassa o limite do razoável e trava o avanço do próprio condomínio, a continuidade de um trabalho estritamente técnico torna-se operacionalmente incompatível com o cenário instaurado.
+        </p>
+        
+        <p style="margin-top: 30px;">Com a entrega deste Relatório Técnico, a Sindicatura dá todos os apontamentos do referido documento paralelo por tecnicamente rebatidos e documentalmente esclarecidos. Na Assembleia Geral, faremos questão de expor presencialmente esses pontos aos moradores e formalizar os encaminhamentos definitivos sobre o encerramento deste ciclo administrativo, assegurando que o Residencial Itália siga seu caminho com total segurança institucional, transparência e respeito à soberania da coletividade.</p>
+        
+        <div class="signature">
+            HS Síndico Profissional e Consultoria
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
